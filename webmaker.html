@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разработка сайтов под ключ | WEBSTUDIO</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Анимации AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .bg-dark-gray { background-color: #121212; }
+        .bg-paper-light { background-color: #f4f1ea; }
+
+        @keyframes spinAround {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-sun { animation: spinAround 15s linear infinite; }
+        .spin-moon { animation: spinAround 25s linear infinite; }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            display: flex;
+            width: 200%;
+            animation: marquee 14s linear infinite;
+        }
+
+        .torn-divider {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            background-color: #121212;
+            margin-top: -1px;
+        }
+        .torn-divider::before {
+            content: "";
+            position: absolute;
+            top: -25px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background-color: #f4f1ea;
+            clip-path: polygon(
+                0% 0%, 100% 0%, 
+                100% 40%, 97% 85%, 94% 30%, 91% 75%, 88% 20%, 84% 90%, 80% 35%, 76% 80%, 
+                72% 15%, 68% 85%, 64% 25%, 60% 70%, 55% 10%, 50% 80%, 46% 30%, 41% 85%, 
+                37% 20%, 32% 75%, 28% 15%, 24% 90%, 20% 30%, 15% 80%, 11% 25%, 7% 85%, 3% 20%, 0% 70%
+            );
+            filter: drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.4));
+        }
+
+        .paper-card {
+            background-color: #ffffff;
+            border: 2px solid #121212;
+            box-shadow: 6px 6px 0px #121212;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0px #ef4444;
+            border-color: #ef4444;
+        }
+
+        .btn-paper {
+            background-color: #121212;
+            color: #ffffff;
+            border: 2px solid #121212;
+            box-shadow: 4px 4px 0px #ef4444;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .btn-paper:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #ef4444;
+            background-color: #ef4444;
+        }
+
+        .btn-telegram {
+            background-color: #24A1DE;
+            color: #ffffff;
+            border: 2px solid #121212;
+            box-shadow: 4px 4px 0px #121212;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .btn-telegram:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #ef4444;
+            background-color: #1d82b3;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .animate-glow { animation: pulseGlow 2.5s infinite; }
+    </style>
+</head>
+<body class="bg-dark-gray text-white antialiased overflow-x-hidden">
+
+    <!-- ВЕРХНЯЯ ЧАСТЬ -->
+    <section class="bg-paper-light text-[#121212] relative pt-8 pb-24 px-6 min-h-[85vh] flex flex-col justify-between">
+        <div class="absolute top-10 right-10 md:top-16 md:right-20 pointer-events-none text-amber-500 text-6xl md:text-8xl drop-shadow-md">
+            <i class="fa-solid fa-sun spin-sun"></i>
+        </div>
+
+        <header class="max-w-6xl mx-auto w-full flex justify-between items-center border-b-2 border-[#121212] pb-4">
+            <a href="#" class="text-xl md:text-2xl font-black uppercase tracking-wider">
+                WEB<span class="text-red-600">STUDIO</span>
+            </a>
+            <div class="flex gap-2 sm:gap-3">
+                <a href="https://wa.me/77769944004?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%B5%D0%BD%20%D1%81%D0%B0%D0%B9%D1%82." target="_blank" class="btn-paper px-3 sm:px-4 py-2 text-xs sm:text-sm font-bold flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span class="hidden sm:inline">WhatsApp</span>
+                </a>
+                <a href="https://t.me/WEB_sitemaker" target="_blank" class="btn-telegram px-3 sm:px-4 py-2 text-xs sm:text-sm font-bold flex items-center gap-2">
+                    <i class="fa-brands fa-telegram text-base"></i>
+                    <span class="hidden sm:inline">Telegram</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="max-w-4xl mx-auto text-center my-auto pt-10" data-aos="fade-up">
+            <h1 class="text-4xl md:text-7xl font-black tracking-tight leading-none uppercase mt-2">
+                РАЗРАБОТКА САЙТОВ<br>
+                <span class="bg-red-500 text-white px-4 py-1 inline-block mt-2 rounded-xl animate-float">ПОД КЛЮЧ</span>
+            </h1>
+            <p class="mt-6 text-[#333333] text-lg md:text-xl max-w-2xl mx-auto font-medium">
+                Создаем конверсионные сайты с продуманной структурой, высокой скоростью загрузки и полной адаптивностью.
+            </p>
+        </div>
+
+        <div class="w-full overflow-hidden border-2 border-[#121212] bg-white py-3 my-6 rounded-2xl">
+            <div class="marquee-track font-black text-xl md:text-2xl uppercase tracking-wider text-[#121212]">
+                <span class="mx-6">★ LANDING PAGE</span>
+                <span class="mx-6">★ ИНТЕРНЕТ-МАГАЗИНЫ</span>
+                <span class="mx-6">★ САЙТЫ-ВИЗИТКИ</span>
+                <span class="mx-6">★ УНИКАЛЬНЫЙ ДИЗАЙН</span>
+                <span class="mx-6">★ LANDING PAGE</span>
+                <span class="mx-6">★ ИНТЕРНЕТ-МАГАЗИНЫ</span>
+                <span class="mx-6">★ САЙТЫ-ВИЗИТКИ</span>
+                <span class="mx-6">★ УНИКАЛЬНЫЙ ДИЗАЙН</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="torn-divider"></div>
+
+    <section class="bg-dark-gray text-white relative py-20 px-6 min-h-screen">
+        <div class="absolute top-12 left-8 md:top-16 md:left-20 pointer-events-none text-indigo-300 text-5xl md:text-7xl opacity-80 drop-shadow-[0_0_15px_rgba(165,180,252,0.4)]">
+            <i class="fa-solid fa-moon spin-moon"></i>
+        </div>
+
+        <div class="max-w-5xl mx-auto space-y-24">
+            <!-- БЛОК «О СТУДИИ» -->
+            <div class="bg-zinc-900 border-2 border-zinc-800 p-8 md:p-12 rounded-2xl" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="space-y-4 md:w-2/3">
+                        <span class="bg-red-500 text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest rounded-md">О нашей студии</span>
+                        <h2 class="text-3xl md:text-5xl font-black uppercase">Фокус на результатах вашего бизнеса</h2>
+                        <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+                            Мы — команда веб-разработчиков и дизайнеров, создающая веб-проекты без лишней бюрократии и сложных агентских наценок. Наша цель — быстро запустить удобный сайт, который закроет потребности вашего бизнеса и начнет приносить заявки.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 w-full md:w-1/3 text-center">
+                        <div class="bg-[#121212] p-4 border border-zinc-700 rounded-xl">
+                            <span class="block text-3xl md:text-4xl font-black text-red-500">5+</span>
+                            <span class="text-xs text-gray-400 font-mono">Лет опыта</span>
+                        </div>
+                        <div class="bg-[#121212] p-4 border border-zinc-700 rounded-xl">
+                            <span class="block text-3xl md:text-4xl font-black text-red-500">50+</span>
+                            <span class="text-xs text-gray-400 font-mono">Проектов</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ВЫБОР КОНФИГУРАЦИИ И СРОКИ -->
+            <div data-aos="fade-up">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-6xl font-black uppercase">Выбор конфигурации</h2>
+                    <p class="text-gray-400 mt-2">Ориентировочные сроки разработки под каждую задачу</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-[#121212]">
+                    <div class="paper-card p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div>
+                            <span class="font-mono text-xs text-gray-500">01 / ТИП</span>
+                            <h3 class="text-2xl font-black mt-2 mb-3">Landing Page</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                                Одностраничный сайт для быстрых продаж с акцентом на высокую конверсию.
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 p-3 rounded-lg border border-zinc-300 font-mono text-xs text-gray-800">
+                            <i class="fa-regular fa-clock text-red-500 mr-2"></i>Срок: <strong>3 – 5 дней</strong>
+                        </div>
+                    </div>
+
+                    <div class="paper-card p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                        <div>
+                            <span class="font-mono text-xs text-gray-500">02 / ТИП</span>
+                            <h3 class="text-2xl font-black mt-2 mb-3">Корпоративный</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                                Многостраничный сайт с детальной информацией о компании и услугах.
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 p-3 rounded-lg border border-zinc-300 font-mono text-xs text-gray-800">
+                            <i class="fa-regular fa-clock text-red-500 mr-2"></i>Срок: <strong>7 – 12 дней</strong>
+                        </div>
+                    </div>
+
+                    <div class="paper-card p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                        <div>
+                            <span class="font-mono text-xs text-gray-500">03 / ТИП</span>
+                            <h3 class="text-2xl font-black mt-2 mb-3">Интернет-магазин</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                                Полноценная торговая площадка с удобным каталогом и корзиной.
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 p-3 rounded-lg border border-zinc-300 font-mono text-xs text-gray-800">
+                            <i class="fa-regular fa-clock text-red-500 mr-2"></i>Срок: <strong>10 – 18 дней</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ПОРТФОЛИО -->
+            <div data-aos="fade-up">
+                <div class="text-center mb-12">
+                    <span class="bg-zinc-800 text-gray-300 px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest rounded-md">Примеры проектов</span>
+                    <h3 class="text-2xl md:text-5xl font-black uppercase mt-3">Портфолио</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-[#121212]">
+                    <div class="paper-card p-6 relative overflow-hidden group">
+                        <div class="h-48 bg-zinc-200 rounded-lg flex items-center justify-center mb-4 border border-zinc-300">
+                            <i class="fa-solid fa-store text-5xl text-zinc-400 group-hover:scale-110 group-hover:text-red-500 transition duration-300"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-500">E-COMMERCE</span>
+                        <h4 class="text-xl font-black mt-1">Интернет-магазин одежды</h4>
+                        <p class="text-gray-600 text-sm mt-2">Каталог, фильтрация товаров, адаптивная корзина и быстрая загрузка.</p>
+                    </div>
+
+                    <div class="paper-card p-6 relative overflow-hidden group">
+                        <div class="h-48 bg-zinc-200 rounded-lg flex items-center justify-center mb-4 border border-zinc-300">
+                            <i class="fa-solid fa-briefcase text-5xl text-zinc-400 group-hover:scale-110 group-hover:text-red-500 transition duration-300"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-500">LANDING PAGE</span>
+                        <h4 class="text-xl font-black mt-1">Сайт юридической компании</h4>
+                        <p class="text-gray-600 text-sm mt-2">Лендинг с анимациями, формой консультации и блоком отзывов клиентов.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ЭТАПЫ РАБОТЫ -->
+            <div data-aos="fade-up">
+                <div class="text-center mb-12">
+                    <span class="bg-zinc-800 text-gray-300 px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest rounded-md">Понятный процесс</span>
+                    <h3 class="text-2xl md:text-5xl font-black uppercase mt-3">Этапы работы</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-[#121212]">
+                    <div class="paper-card p-5">
+                        <span class="text-3xl font-black text-red-500 font-mono">01</span>
+                        <h4 class="font-black text-lg mt-2">Обсуждение</h4>
+                        <p class="text-gray-600 text-sm mt-1">Собираем требования, анализируем нишу и определяем цели сайта.</p>
+                    </div>
+
+                    <div class="paper-card p-5">
+                        <span class="text-3xl font-black text-red-500 font-mono">02</span>
+                        <h4 class="font-black text-lg mt-2">Дизайн и структура</h4>
+                        <p class="text-gray-600 text-sm mt-1">Продумываем удобную структуру страниц и создаем стиль.</p>
+                    </div>
+
+                    <div class="paper-card p-5">
+                        <span class="text-3xl font-black text-red-500 font-mono">03</span>
+                        <h4 class="font-black text-lg mt-2">Разработка</h4>
+                        <p class="text-gray-600 text-sm mt-1">Верстаем быстрый адаптивный код, настраиваем анимации и формы.</p>
+                    </div>
+
+                    <div class="paper-card p-5">
+                        <span class="text-3xl font-black text-red-500 font-mono">04</span>
+                        <h4 class="font-black text-lg mt-2">Запуск</h4>
+                        <p class="text-gray-600 text-sm mt-1">Тестируем сайт на всех устройствах и переносим его на ваш домен.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ЦЕНЫ «ОБСУДИМ ВМЕСТЕ» -->
+            <div class="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-red-500/50 p-8 md:p-12 rounded-2xl text-center relative overflow-hidden" data-aos="zoom-in">
+                <span class="bg-red-500 text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest rounded-md animate-glow">Гибкая стоимость</span>
+                <h3 class="text-3xl md:text-5xl font-black uppercase mt-4">Цены обсудим вместе</h3>
+                <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto mt-4 leading-relaxed">
+                    У нас нет раздутых фиксированных тарифов. Мы подберем решение под ваш бюджет — платите только за те функции, которые реально необходимы вашему проекту.
+                </p>
+            </div>
+
+            <!-- ФОРМА ЗАЯВКИ -->
+            <div id="contact-form" class="bg-[#1a1a1a] border-2 border-zinc-700 p-8 md:p-12 relative rounded-2xl" data-aos="zoom-in">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl md:text-4xl font-black uppercase">Оставить заявку</h3>
+                    <p class="text-gray-400 text-sm mt-2">Заполните детали и выберите, куда отправить данные</p>
+                </div>
+
+                <form onsubmit="handleFormSubmit(event)" class="space-y-6 max-w-2xl mx-auto">
+                    <div>
+                        <label class="block text-xs font-mono font-bold uppercase text-gray-300 mb-2">Ваше имя *</label>
+                        <input type="text" id="userName" required placeholder="Введите ваше имя" 
+                               class="w-full bg-[#121212] border-2 border-zinc-700 p-4 text-white focus:outline-none focus:border-red-500 transition rounded-xl">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono font-bold uppercase text-gray-300 mb-3">Выберите тип сайта:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+                            <label class="flex items-center gap-3 p-3 bg-[#121212] border border-zinc-700 cursor-pointer hover:border-red-500 rounded-xl transition">
+                                <input type="checkbox" name="siteType" value="Landing Page" class="w-4 h-4 accent-red-500 rounded">
+                                <span>Landing Page</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-[#121212] border border-zinc-700 cursor-pointer hover:border-red-500 rounded-xl transition">
+                                <input type="checkbox" name="siteType" value="Сайт компании" class="w-4 h-4 accent-red-500 rounded">
+                                <span>Сайт компании</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-[#121212] border border-zinc-700 cursor-pointer hover:border-red-500 rounded-xl transition">
+                                <input type="checkbox" name="siteType" value="Интернет-магазин" class="w-4 h-4 accent-red-500 rounded">
+                                <span>Интернет-магазин</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-[#121212] border border-zinc-700 cursor-pointer hover:border-red-500 rounded-xl transition">
+                                <input type="checkbox" name="siteType" value="Сайт-визитка" class="w-4 h-4 accent-red-500 rounded">
+                                <span>Сайт-визитка</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono font-bold uppercase text-gray-300 mb-2">Детали задачи</label>
+                        <textarea id="userTask" rows="3" placeholder="Расскажите о вашей задаче..." 
+                                  class="w-full bg-[#121212] border-2 border-zinc-700 p-4 text-white focus:outline-none focus:border-red-500 transition rounded-xl"></textarea>
+                    </div>
+
+                    <!-- Кнопки отправки -->
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4">
+                        <button type="submit" onclick="targetMessenger = 'wa'" 
+                                class="w-full btn-paper py-4 text-base font-black uppercase tracking-wider flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Отправить в WhatsApp</span>
+                        </button>
+                        
+                        <button type="submit" onclick="targetMessenger = 'tg'" 
+                                class="w-full btn-telegram py-4 text-base font-black uppercase tracking-wider flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-telegram text-2xl"></i>
+                            <span>Отправить в Telegram</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <footer class="mt-20 text-center text-xs text-gray-500 font-mono">
+            © 2026 Все права защищены.
+        </footer>
+    </section>
+
+    <!-- Скрипты -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        let targetMessenger = 'wa';
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('userName').value;
+            const task = document.getElementById('userTask').value;
+
+            const selectedTypes = [];
+            document.querySelectorAll('input[name="siteType"]:checked').forEach((cb) => {
+                selectedTypes.push(cb.value);
+            });
+
+            let message = `Здравствуйте! Мне нужен сайт.\n\n`;
+            message += `👤 Имя: ${name}\n`;
+            
+            if (selectedTypes.length > 0) {
+                message += `📋 Выбранные опции: ${selectedTypes.join(', ')}\n`;
+            }
+            
+            if (task) {
+                message += `💬 Детали задачи: ${task}\n`;
+            }
+
+            const encoded = encodeURIComponent(message);
+
+            if (targetMessenger === 'wa') {
+                window.open(`https://wa.me/77769944004?text=${encoded}`, '_blank');
+            } else {
+                window.open(`https://t.me/WEB_sitemaker?text=${encoded}`, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
